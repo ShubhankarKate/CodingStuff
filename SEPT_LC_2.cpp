@@ -1,0 +1,73 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int t,i,j,k,n,f,f1,c1,c;
+	cin>>t;
+	while(t--)
+	{
+		f=f1=c1=c=0;
+		cin>>n;
+		int a[n][n],b[n];
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				cin>>a[i][j];
+			}
+			b[i]=1;
+		}
+		for(i=0;i<n;i++)
+		{
+			if(a[0][i]!=i+1)
+			{
+				b[i]=0;
+			}
+		}
+		while(f==0)
+		{
+			f1=1;
+			if(b[n-1]==1)
+			{
+			    f1=0;
+			}
+			c1=1;
+			for(i=n-1;i>0;i--)
+			{
+				if(b[i]==1 && f1==0)
+				{
+					f1=0;
+					continue;
+				}
+				else if(f1==1 || b[i]==0)
+				{
+					f1=1;
+					if(b[i]==1)
+					{
+						b[i]=0;
+					}
+					else
+					{
+						b[i]=1;
+					}
+				}
+			}
+			if(f1==1)
+			{
+				c++;
+			}
+			for(i=1;i<n;i++)
+			{
+				if(b[i]==1)
+				{
+					c1++;
+				}
+			}
+			if(c1==n)
+			{
+				f=1;
+			}
+		}
+	    cout<<c<<endl;
+	}
+}
